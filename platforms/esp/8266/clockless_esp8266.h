@@ -7,6 +7,10 @@ extern uint32_t _frame_cnt;
 extern uint32_t _retry_cnt;
 #endif
 
+#undef min
+#define min(a,b) ((a)<(b)?(a):(b))
+
+
 // Info on reading cycle counter from https://github.com/kbeckmann/nodemcu-firmware/blob/ws2812-dual/app/modules/ws2812.c
 __attribute__ ((always_inline)) inline static uint32_t __clock_cycles() {
   uint32_t cyc;
@@ -53,7 +57,7 @@ protected:
 #define _ESP_ADJ2 (0)
 
 	template<int BITS> __attribute__ ((always_inline)) inline static void writeBits(register uint32_t & last_mark, register uint32_t b)  {
-    b <<= 24; b = ~b;
+    b = ~b; b <<= 24;
     for(register uint32_t i = BITS; i > 0; i--) {
       while((__clock_cycles() - last_mark) < (T1+T2+T3));
 			last_mark = __clock_cycles();
