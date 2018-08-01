@@ -64,7 +64,6 @@ protected:
     // mWait.mark();
   }
 
-
 #define _ESP_ADJ (0)
 #define _ESP_ADJ2 (0)
 
@@ -97,8 +96,6 @@ protected:
 		register uint32_t b = pixels.loadAndScale0();
 #endif // FASTLED_RGBW
     pixels.preStepFirstByteDithering();
-
-
 		os_intr_lock();
     uint32_t start = __clock_cycles();
 		uint32_t last_mark = start;
