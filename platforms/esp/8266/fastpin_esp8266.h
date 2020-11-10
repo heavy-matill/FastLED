@@ -2,6 +2,12 @@
 
 FASTLED_NAMESPACE_BEGIN
 
+typedef struct {
+    uint32_t c0;
+    uint32_t c1;
+    uint32_t c2;
+} out_4px;
+
 struct FASTLED_ESP_IO {
   volatile uint32_t _GPO;
   volatile uint32_t _GPOS;
